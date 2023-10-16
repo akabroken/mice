@@ -1,0 +1,306 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.bg-img {
+    /* The image used */
+    background-image: url("../public/images/logo.png");
+
+    min-height: 380px;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    /* Needed to position the navbar */
+    position: relative;
+}
+
+#top-bar {
+    background-color: #2c1983;
+    color: white;
+    padding: 10px;
+    display: flex;
+    /* text-align: right; */
+    justify-content: space-between;
+    /* To push the links to the left and the logo to the right */
+    align-items: center;
+}
+
+#top-bar img {
+    max-height: 30px;
+    /* Adjust the height as needed */
+    margin-right: 20px;
+    /* Add some spacing between the logo and links */
+}
+
+#right-content {
+    display: flex;
+    align-items: center;
+}
+
+#right-content a {
+    color: white;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+#center-panel {
+    text-align: center;
+}
+
+
+.mySlides {
+    display: none;
+}
+
+img {
+    max-width: 100%;
+    max-height: 350px;
+    /* Adjust this value as needed */
+    width: auto;
+    height: auto;
+}
+
+/* Slideshow container */
+.slideshow-container {
+    max-width: 1400px;
+    position: relative;
+    margin: auto;
+}
+
+/* Caption text */
+.text {
+    color: #f2f2f2;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active {
+    background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+    .text {
+        font-size: 11px
+    }
+}
+
+#image-links {
+    margin-top: 20px;
+}
+
+#image-links img {
+    width: 20%;
+    margin: 10px;
+}
+
+.container {
+    background-image: url('/images/mice_back_cover.png');
+    /* Add your background image path */
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+}
+
+.containers {
+    padding: 64px;
+}
+
+
+.containertop {
+    background-image: url('/images/mice_icon2.png');
+    /* Add your background image path */
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+}
+
+.containermid {
+    background-image: url('/images/MICEBody2.png');
+    /* Add your background image path */
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+}
+
+.containermidd {
+    background-image: url('/images/MICEBody1.png');
+    /* Add your background image path */
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+}
+
+/* Card styles */
+.card {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.card2 {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Image slider styles */
+.image-slider {
+    width: 100%;
+    height: auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.image-slider img {
+    width: 100%;
+    height: auto;
+    display: none;
+}
+
+.image-sliderr {
+    width: 100%;
+    height: auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.image-sliderr img {
+    width: 100%;
+    height: auto;
+    display: none;
+}
+
+.image-sliderrr {
+    width: 100%;
+    height: auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.image-sliderrr img {
+    width: 100%;
+    height: auto;
+    display: none;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both
+}
+
+.column-66 {
+    float: left;
+    width: 66.66666%;
+    padding: 20px;
+}
+
+.column-67 {
+    float: left;
+    width: 66.66666%;
+    padding: 20px;
+}
+
+.column-33 {
+    width: 33.33%;
+    float: left;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+.column-40 {
+    float: left;
+    width: 40%;
+    padding: 20px;
+}
+
+
+.large-font {
+    font-size: 48px;
+}
+
+.xlarge-font {
+    font-size: 64px
+}
+
+.button {
+    border: none;
+    color: white;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #04AA6D;
+}
+
+img {
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+
+@media screen and (max-width: 1000px) {
+
+    .column-66,
+    .column-33 {
+        width: 100%;
+        text-align: center;
+    }
+
+    img {
+        margin: auto;
+    }
+}

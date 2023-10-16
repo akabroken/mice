@@ -1,0 +1,56 @@
+<%- include('../pages/layout') %>
+<main>
+    <% if (messages.success) { %>
+    <div class="alert alert-success" role="alert"><%- messages.success %></div>
+    <% } %>
+
+    <% if (messages.error) { %>
+    <div class="alert alert-danger" role="alert"><%- messages.error %></div>
+    <% } %>
+
+    <div class="card"> 
+        <div class="card-header">
+            <ul class="nav nav-pills w-100">
+                <li class="nav-pill active">
+                    <a class="nav-link">Organizers</a>
+                </li>
+                <li class="nav-pill ml-auto">
+                    <a class="nav-link active" href="/organizer/add">Add organizer</a>
+                </li>
+            </ul>
+        </div>
+    <div class="card-body">        
+        <% if(data.length) { %>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Staff Id</th>
+                    <th scope="col">Description</th>
+                    <th width="200px">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            <% for(var i = 0; i< data.length; i++) { %>
+                <tr>
+                    <th scope="row"><%= (i+1) %></th>
+                    <td><%= data[i].staffId%></td>
+                    <td><%= data[i].description%></td>                   
+                    <td>
+                        <a class="btn btn-success edit" href="../organizer/edit/<%=data[i].organizerId%>">Edit</a>
+                        <a class="btn btn-danger delete" onclick="return alert('Are you sure want to delete this record?')" href="../organizer/delete/<%=data[i].organizerId %>">Delete</a> 
+                    </td>
+                </tr>
+            <% } %>
+            </tbody>
+        </table>
+        <% } %>
+        
+        <!-- if result is empty -->
+        <% if(!data.length) { %>
+            <p class="text-center">No Organizer found!</p>
+        <% } %>
+        </div>
+    </div>
+</main>
+

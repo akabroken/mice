@@ -1,0 +1,125 @@
+</div>
+<footer class="footer">
+    <!-- <div class="waves">
+        <div class="wave" id="wave1"></div>
+        <div class="wave" id="wave2"></div>
+        <div class="wave" id="wave3"></div>
+        <div class="wave" id="wave4"></div>
+    </div> -->
+    <ul class="social-icon">
+        <li class="social-icon__item"><a class="social-icon__link" href="#">
+                <ion-icon name="logo-facebook"></ion-icon>
+            </a></li>
+        <li class="social-icon__item"><a class="social-icon__link" href="#">
+                <ion-icon name="logo-twitter"></ion-icon>
+            </a></li>
+        <li class="social-icon__item"><a class="social-icon__link" href="#">
+                <ion-icon name="logo-linkedin"></ion-icon>
+            </a></li>
+        <li class="social-icon__item"><a class="social-icon__link" href="#">
+                <ion-icon name="logo-instagram"></ion-icon>
+            </a></li>
+    </ul>
+    <!-- <ul class="menu">
+        <li class="menu__item"><a class="menu__link" href="#">Home</a></li>
+        <li class="menu__item"><a class="menu__link" href="#">About</a></li>
+        <li class="menu__item"><a class="menu__link" href="#">Services</a></li>
+        <li class="menu__item"><a class="menu__link" href="#">Team</a></li>
+        <li class="menu__item"><a class="menu__link" href="#">Contact</a></li>
+
+    </ul> -->
+    <p>&copy;2023 MICE | All Rights Reserved</p>
+</footer>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // Initialize the card slide indexes
+        var cardSlideIndexes = [];
+        let slideIndex = 0;
+        showSlides();
+
+        // Define the image sliders and their respective card IDs
+        var imageSliders = [
+            { slider: $(".image-slider"), interval: 2000 },
+            { slider: $(".image-sliderr"), interval: 2000 },
+            { slider: $(".image-sliderrr"), interval: 2000 },
+            // Add more sliders here as needed
+        ];
+
+        // Initialize the sliders
+        imageSliders.forEach(function (slider, index) {
+            cardSlideIndexes[index] = 0;
+            showCardSlides(index);
+        });
+
+        function showCardSlides(sliderIndex) {
+            var slides = imageSliders[sliderIndex].slider.find("img");
+
+            slides.hide();
+            cardSlideIndexes[sliderIndex]++;
+
+            if (cardSlideIndexes[sliderIndex] > slides.length) {
+                cardSlideIndexes[sliderIndex] = 1;
+            }
+
+            slides.eq(cardSlideIndexes[sliderIndex] - 1).show();
+
+            setTimeout(function () {
+                showCardSlides(sliderIndex);
+            }, imageSliders[sliderIndex].interval);
+        }
+
+        function showSlides() {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1 }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+            setTimeout(showSlides, 5000); // Change image every 5 seconds
+        }
+    });
+
+    // JavaScript for handling dropdowns
+    document.addEventListener("DOMContentLoaded", function () {
+        var dropdowns = document.querySelectorAll(".dropdown");
+
+        for (var i = 0; i < dropdowns.length; i++) {
+            dropdowns[i].addEventListener("mouseenter", function () {
+                this.querySelector(".dropdown-content").style.display = "block";
+            });
+
+            dropdowns[i].addEventListener("mouseleave", function () {
+                this.querySelector(".dropdown-content").style.display = "none";
+            });
+        }
+    });
+
+    const selectRepeating = document.getElementById('repeating');
+    const inputEventDays = document.getElementById('eventdays');
+
+    selectRepeating.addEventListener('change', function () {
+        if (selectRepeating.value === 'yes') {
+            inputEventDays.style.display = 'block';
+            inputEventDays.setAttribute('required', 'true');
+        } else {
+            inputEventDays.style.display = 'none';
+            inputEventDays.removeAttribute('required');
+        }
+    });
+</script>
+
+
+</body>
+
+</html>

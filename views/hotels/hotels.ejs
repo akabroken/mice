@@ -1,0 +1,69 @@
+<%- include('../pages/layout') %>
+<main>
+    <% if (messages.success) { %>
+    <div class="alert alert-success" role="alert"><%- messages.success %></div>
+    <% } %>
+
+    <% if (messages.error) { %>
+    <div class="alert alert-danger" role="alert"><%- messages.error %></div>
+    <% } %>
+
+    <div class="card"> 
+        <div class="card-header">
+            <ul class="nav nav-pills w-100">
+                <li class="nav-pill active">
+                    <a class="nav-link">Hotels</a>
+                </li>
+                <li class="nav-pill ml-auto">
+                    <a class="nav-link active" href="/hotels/add">Add Hotel</a>
+                </li>
+            </ul>
+        </div>
+    <div class="card-body">        
+        <% if(data.length) { %>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Hotel Name</th>
+                    <th scope="col">country</th>
+                    <th scope="col">state</th>
+                    <th scope="col">city</th>
+                    <th scope="col">location</th>
+                    <th scope="col">address</th>
+                    <th scope="col">contactInfo</th>
+                    <th scope="col">description</th>
+                    <th scope="col">ratings</th>
+                    <th width="200px">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            <% for(var i = 0; i< data.length; i++) { %>
+                <tr>
+                    <th scope="row"><%= (i+1) %></th>
+                    <td><%= data[i].hotelName%></td>
+                    <td><%= data[i].country%></td> 
+                    <td><%= data[i].state%></td> 
+                    <td><%= data[i].city%></td> 
+                    <td><%= data[i].location%></td> 
+                    <td><%= data[i].address%></td> 
+                    <td><%= data[i].contactInfo%></td> 
+                    <td><%= data[i].description%></td> 
+                    <td><%= data[i].ratings%></td>                   
+                    <td>
+                        <a class="btn btn-success edit" href="../hotels/edit/<%=data[i].hotelId%>">Edit</a>
+                        <a class="btn btn-danger delete" onclick="return alert('Are you sure want to delete this record?')" href="../hotels/delete/<%=data[i].hotelId %>">Delete</a> 
+                    </td>
+                </tr>
+            <% } %>
+            </tbody>
+        </table>
+        <% } %>
+        
+        <!-- if result is empty -->
+        <% if(!data.length) { %>
+            <p class="text-center">No Hotels found!</p>
+        <% } %>
+        </div>
+    </div>
+</main>

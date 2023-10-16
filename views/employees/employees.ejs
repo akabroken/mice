@@ -1,0 +1,66 @@
+<%- include('../pages/layout') %>
+<div>
+    <% if (messages.success) { %>
+        <div class="alert alert-success" role="alert"><%- messages.success %></div>
+        <% } %>
+    
+        <% if (messages.error) { %>
+        <div class="alert alert-danger" role="alert"><%- messages.error %></div>
+        <% } %>
+    
+        <div class="card">
+            <div class="card-header">
+                <ul class="nav nav-pills">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/employee">Employees</a>
+                    </li>
+                    <li class="nav-item ml-auto">
+                        <a class="nav-link" href="/employee/add">Add Employee</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body">
+                <% if(data.length) { %>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">First Name</th>
+                            <th scope="col">Middle Name</th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">Role</th>
+                            <th scope="col">Date Enroll</th>
+    
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for(var i = 0; i< data.length; i++) { %>
+                        <tr>
+                            <th scope="row"><%= (i+1) %></th>
+                            <td><%= data[i].firstName %></td>
+                            <td><%= data[i].middleName %></td>
+                            <td><%= data[i].lastName %></td>
+                            <td><%= data[i].roleId %></td>
+                            <td><%= formatDate(data[i].dateEnrolled) %></td>
+    
+                            <td>
+                                <a class="btn btn-success edit" href="../employee/edit/<%=data[i].staffId %>">Edit</a>
+                                <a class="btn btn-danger delete" onclick="return confirm('Are you sure you want to delete this record?')" href="../employee/delete/<%=data[i].staffId %>">Delete</a>
+                            </td>
+                        </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+                <% } %>
+    
+                <!-- if result is empty -->
+                <% if(!data.length) { %>
+                <p class="text-center">No Employees found!</p>
+                <% } %>
+            </div>
+        </div>
+
+</div>
+  
+</div>

@@ -1,0 +1,65 @@
+<%- include('../pages/layout') %>
+<main>
+    <% if (messages.success) { %>
+    <div class="alert alert-success" role="alert"><%- messages.success %></div>
+    <% } %>
+
+    <% if (messages.error) { %>
+    <div class="alert alert-danger" role="alert"><%- messages.error %></div>
+    <% } %>
+
+    <div class="card"> 
+        <div class="card-header">
+            <ul class="nav nav-pills w-100">
+                <li class="nav-pill active">
+                    <a class="nav-link">Events</a>
+                </li>
+                <li class="nav-pill ml-auto">
+                    <a class="nav-link active" href="/events/add">Add Event</a>
+                </li>
+            </ul>
+        </div>
+    <div class="card-body">        
+        <% if(data.length) { %>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Event Name</th>
+                    <th scope="col">Organizer Id</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Description</th>
+                    <th width="200px">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            <% for(var i = 0; i< data.length; i++) { %>
+                <tr>
+                    <th scope="row"><%= (i+1) %></th>
+                    <td><%= data[i].eventName%></td>
+                    <td><%= data[i].organizerId%></td> 
+                    <td><%= data[i].location%></td> 
+                    <td><%= formatDate(data[i].eventdate)%></td> 
+                    <td><%= data[i].eventTime%></td> 
+                    <td><%= data[i].price%></td> 
+                    <td><%= data[i].description%></td>                  
+                    <td>
+                        <a class="btn btn-success edit" href="../events/edit/<%=data[i].eventId%>">Edit</a>
+                        <a class="btn btn-danger delete" onclick="return alert('Are you sure want to delete this record?')" href="../events/delete/<%=data[i].eventId%>">Delete</a> 
+                    </td>
+                </tr>
+            <% } %>
+            </tbody>
+        </table>
+        <% } %>
+        
+        <!-- if result is empty -->
+        <% if(!data.length) { %>
+            <p class="text-center">No Events found!</p>
+        <% } %>
+        </div>
+    </div>
+</main>

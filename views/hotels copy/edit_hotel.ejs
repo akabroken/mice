@@ -1,0 +1,57 @@
+
+<%- include('../pages/layout') %>
+<main>
+	<% if (messages.error) { %>
+	<div class="alert alert-danger" role="alert"><%- messages.error %></div>
+	<% } %>
+    <div class="card"> 
+    	<div class="card-header">
+			Edit Hotel
+		</div>
+        <div class="card-body">
+            <form action="/hotels/update/<%= id %>" method="post">
+                
+                <div class="form-group">
+                    <label>Hotel Name:</label>
+                    <input type="text" class="form-control" name="hotelName" value="<%= hotelName %>" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label>Country:</label>
+                    <input type="text" class="form-control" name="country" value="<%= country %>" autocomplete="off">
+                </div>   
+                <div class="form-group">
+                    <label>State:</label>
+                    <input type="text" class="form-control" name="state" value="<%= state %>" autocomplete="off">
+                </div> 
+                <div class="form-group">
+                    <label>City:</label>
+                    <input type="text" class="form-control" name="city" value="<%= city %>" autocomplete="off">
+                </div> 
+                <div class="form-group">
+                    <label>Location:</label>
+                    <input type="text" class="form-control" name="location" value="<%= location %>" autocomplete="off">
+                </div> 
+                <div class="form-group">
+                    <label>Address:</label>
+                    <input type="text" class="form-control" name="address" value="<%= address %>" autocomplete="off">
+                </div> 
+                <div class="form-group">
+                    <label>Contact Info:</label>
+                    <input type="text" class="form-control" name="contactInfo" value="<%= contactInfo %>" autocomplete="off">
+                </div> 
+                <div class="form-group">
+                    <label>Description:</label>
+                    <input type="text" class="form-control" name="description" value="<%= description %>" autocomplete="off">
+                </div> 
+                <div class="form-group">
+                    <label>Ratings:</label>
+                    <input type="text" class="form-control" name="ratings" value="<%= ratings %>" autocomplete="off">
+                </div> 
+               
+                <div class="form-group">
+                    <input type="submit" class="btn btn-info" value="Update"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>

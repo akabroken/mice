@@ -1,0 +1,39 @@
+<%- include('../pages/layout') %>
+<main>
+	<% if (messages.error) { %>
+	<div class="alert alert-danger" role="alert"><%- messages.error %></div>
+	<% } %>
+    <div class="card"> 
+    	<div class="card-header">
+			Add Event
+		</div>
+        <div class="card-body">
+            <form action="/events/add" method="post">
+                <div class="form-group">
+                    <label>Event Name:</label>
+                    <input type="text" class="form-control" name="eventName" value="<%= eventName %>" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label>Organizer Id:</label>
+                    <input type="text" class="form-control" name="organizerId" value="<%= organizerId %>" autocomplete="off">
+                </div>   
+                <div class="form-group">
+                    <label>Location:</label>
+                    <input type="text" class="form-control" name="location" value="<%= location %>" autocomplete="off">
+                </div> 
+                <div class="form-group">
+                    <label>Price:</label>
+                    <input type="text" class="form-control" name="price" value="<%= price %>" autocomplete="off">
+                </div> 
+                <div class="form-group">
+                    <label>Description:</label>
+                    <input type="text" class="form-control" name="description" value="<%= description %>" autocomplete="off">
+                </div> 
+                   		
+                <div class="form-group">
+                    <input type="submit" class="btn btn-info" value="Add"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>

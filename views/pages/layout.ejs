@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="MICE Booking website">
+  <meta name="keywords" content="HTML, CSS, JavaScript">
+  <meta name="author" content="Kennedy Amahaya">
+  <meta http-equiv="refresh" content="300">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    <%= title %>
+  </title>
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"> -->
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="/css/style.css">
+  <!-- <link rel="stylesheet" href="/css/style_mins_1_2.css"> -->
+  <style>
+    .submitter-group {
+      margin-bottom: 10px;
+      /* Add margin at the bottom to create spacing between groups */
+    }
+
+    label {
+      display: inline-block;
+      width: 120px;
+      /* Set a width for the labels to align them properly */
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- <div class="content"> -->
+  <div id="top-bar">
+    <img src="/images/mice_logo_1.png" alt="Your Logo">
+    <div id="left-content">
+
+    </div>
+
+
+    <div id="right-content">
+      <a href="/"><i class="fa fa-fw fa-user"></i>Logout</a>
+    </div>
+  </div>
+  <button class="openbtn" onclick="openNav()">☰</button>
+  <div class="container">
+
+    <div id="mySidebar" class="sidebar collapsed">
+      <img src="/images/mice_logo_1.png" alt="Your Logo" width="50" height="30">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+      <nav>
+        <ul>
+          <% function generateMenu(items, parentId) { %>
+            <% items.forEach(item=> { %>
+              <% if (item.parent_id===parentId) { %>
+                <li class="dropdown-btn">
+                  <a href="<%= item.link %>">
+                    <%= item.label %>
+                  </a>
+                  <ul class="dropdown-content">
+                    <% generateMenu(items, item.id) %>
+                  </ul>
+                </li>
+                <% } %>
+                  <% }); %>
+                    <% } %>
+                      <% generateMenu(menuItems, 0); %>
+        </ul>
+      </nav>
+    </div>
+
+    <div id="main">
+
+
+
+
+    </div>
+
+
+    <!-- This is where your specific page content will be inserted -->
+
+    <!-- </div> -->
+    <!-- </div> -->
+
+    <script>
+      // Existing JavaScript code...
+      var dropdown = document.getElementsByClassName("dropdown-btn");
+      var i;
+
+      for (i = 0; i < dropdown.length; i++) {
+        dropdown[i].addEventListener("click", function () {
+          this.classList.toggle("active");
+          var dropdownContent = this.querySelector(".dropdown-content");
+          if (dropdownContent.style.maxHeight) {
+            dropdownContent.style.maxHeight = null;
+          } else {
+            dropdownContent.style.maxHeight = dropdownContent.scrollHeight + "px";
+          }
+        });
+      }
+
+      function toggleSidebar() {
+        const sidebar = document.querySelector('aside');
+        sidebar.classList.toggle('collapsed');
+      }
+
+      const sidebarToggleBtn = document.getElementById('sidebar-toggle');
+      sidebarToggleBtn.addEventListener('click', toggleSidebar);
+
+      const pageContent = document.querySelector('.page-content');
+      pageContent.addEventListener('click', function () {
+        const sidebar = document.querySelector('#sidebar');
+        if (!sidebar.classList.contains('collapsed')) {
+          toggleSidebar();
+        }
+      });
+
+      // Prevent clicks inside the sidebar from closing it.
+      const sidebar = document.querySelector('#sidebar');
+      sidebar.addEventListener('click', function (event) {
+        event.stopPropagation();
+      });
+
+
+      // Function to open the sidebar
+      function openNav() {
+        document.getElementById("mySidebar").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "250px";
+        document.querySelector('.sidebar').classList.remove('collapsed');
+      }
+
+      // Function to close the sidebar
+      function closeNav() {
+        document.getElementById("mySidebar").style.width = "0";
+        document.getElementById("main").style.marginLeft = "0";
+        document.querySelector('.sidebar').classList.add('collapsed');
+      }
+    </script>
+</body>
+
+</html>

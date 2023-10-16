@@ -1,0 +1,50 @@
+
+<%- include('../pages/layout') %>
+<main>
+	<% if (messages.error) { %>
+	<div class="alert alert-danger" role="alert"><%- messages.error %></div>
+	<% } %>
+    <div class="card"> 
+    	<div class="card-header">
+			Add Hotel Room
+		</div>
+        <div class="card-body">
+            <form action="/hotelrooms/add" method="post" enctype="multipart/form-data">
+                 
+                <div class="form-group">
+                    <label>Hotel:</label>
+                   
+                    <select class="select" name="hotelId"  data-mdb-placeholder="Example placeholder" >
+                        <% for (var i=0; i < data.length; i++) { %>
+                            <option name="hotelId" value="<%= data[i].hotelId %>"><%= data[i].hotelName %></option>
+                            <% } %>
+                    </select>
+                </div>       
+                <div class="form-group">
+                    <label>Room Number:</label>
+                    <input type="text" class="form-control" name="roomNumber" value="<%= roomNumber %>" autocomplete="off">
+                </div>   
+                <div class="form-group">
+                    <label>Room Type:</label>
+                    <input type="text" class="form-control" name="roomType" value="<%= roomType %>" autocomplete="off">
+                </div> 
+                <div class="form-group">
+                    <label>Price Per Night:</label>
+                    <input type="text" class="form-control" name="pricePerNight" value="<%= pricePerNight %>" autocomplete="off">
+                </div> 
+                <div class="form-group">
+                    <label><Abbr></Abbr>vailability:</label>
+                    <input type="text" class="form-control" name="availability" value="<%= availability %>" autocomplete="off">
+                </div> 
+                <div class="form-group">
+                    <span>Upload File: </span>  
+                    <input type="file" name="images" multiple/> <br>
+                </div>
+                          		
+                <div class="form-group">
+                    <input type="submit" class="btn btn-info" value="Add"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>

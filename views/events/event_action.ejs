@@ -1,0 +1,105 @@
+<%- include('../pages/layout') %>
+<main>
+    <% if (messages.success) { %>
+    <div class="alert alert-success" role="alert"><%- messages.success %></div>
+    <% } %>
+
+    <% if (messages.error) { %>
+    <div class="alert alert-danger" role="alert"><%- messages.error %></div>
+    <% } %>
+
+    <div class="card">
+        <div class="card-header">
+           <h1>Event Action</h1> 
+        </div>
+        <div class="card-body">
+            <form action="/events/process/<%= id %>" method="post">
+
+                <fieldset>
+                    <legend>Customer Info</legend>
+                    <div class="submitter-group">
+                        <label>First Name:</label>
+                        <input type="text" id="firstname" name="firstname"value="<%= firstName %>" autocomplete="off" readonly>
+                        <label>Middle Name:</label>
+                        <input type="text" id="middlename"  name="middlename" value="<%= middleName %>" autocomplete="off" readonly>
+                        <label>Last Name:</label>
+                        <input type="text" id="lastName"  name="lastName" value="<%= lastName %>" autocomplete="off" readonly>
+                    </div>
+
+                    <div class="submitter-group">
+                        <label>Company:</label>
+                        <input type="text" id="organization" name="organization"value="<%= organization %>" autocomplete="off" readonly>
+                        <label>Email:</label>
+                        <input type="text" id="email"  name="email" value="<%= email %>" autocomplete="off" readonly>
+                        <label>Phone:</label>
+                        <input type="text" id="phoneNumber"  name="phoneNumber" value="<%= phoneNumber %>" autocomplete="off" readonly>
+                    </div>
+
+                    <div class="submitter-group">
+                        <label>Address:</label>
+                        <input type="text" id="address" name="address"value="<%= address %>" autocomplete="off" readonly>
+                        <label>City:</label>
+                        <input type="text" id="city"  name="city" value="<%= city %>" autocomplete="off" readonly>
+                        <label>Country:</label>
+                        <input type="text" id="country"  name="country" value="<%= country %>" autocomplete="off" readonly>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Event Info</legend>
+                    <div class="submitter-group">
+                        <label>Event Name:</label>
+                        <input type="text" id="eventName" name="eventName"value="<%= eventName %>" autocomplete="off" readonly>
+                        <label>Event Date:</label>
+                        <input type="text" id="eventDate"  name="eventDate" value="<%= eventDate %>" autocomplete="off" readonly>
+                        <label>Location:</label>
+                        <input type="text" id="location"  name="location" value="<%= location %>" autocomplete="off" readonly>
+                    </div>
+                    <div class="submitter-group">
+                        <label>Start Time:</label>
+                        <input type="text" id="eventStartTime" name="eventStartTime"value="<%= eventStartTime %>" autocomplete="off" readonly>
+                        <label>End Time:</label>
+                        <input type="text" id="eventEndTime"  name="eventEndTime" value="<%= eventEndTime %>" autocomplete="off" readonly>      
+                    </div>
+                    <div class="submitter-group">
+                        <label>EventType:</label>
+                        <textarea id="eventType" name="eventType" autocomplete="off" readonly><%= eventType %></textarea>        
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Action</legend>
+                    <div class="submitter-group">
+                        <label>Check in Date:</label>
+                        <input type="text" id="checkinDate" name="checkinDate"value="<%= dateFormat(checkinDate) %>" autocomplete="off" readonly>
+                        <label>Check out Date:</label>
+                        <input type="text" id="checkoutDate"  name="checkoutDate" value="<%= dateFormat(checkoutDate) %>" autocomplete="off" readonly>      
+                    </div>
+
+                    <div class="submitter-group">
+                        <label>Check in Date:</label>
+                        <input type="text" id="checkinDate" name="checkinDate"value="<%= dateFormat(checkinDate) %>" autocomplete="off" readonly>
+                        <label>Check out Date:</label>
+                        <input type="text" id="checkoutDate"  name="checkoutDate" value="<%= dateFormat(checkoutDate) %>" autocomplete="off" readonly>      
+                    </div>
+
+                    <div class="submitter-group">
+                        <label>Status:</label>
+                        <select name="status" id="status" required>
+                            <option value="">--Select--</option>
+                            <option value="Pending">Pending</option>
+                            <option value="Progress">Progress</option>
+                            <option value="Delayed">Delayed</option>
+                            <option value="Complete">Complete</option>
+                        </select>
+                        <label>Price:</label>
+                        <input type="number" id="totalPrice"  name="totalPrice" value="<%= totalPrice %>" autocomplete="off" >      
+                    </div>
+
+                </fieldset>
+                
+                <div class="form-group">
+                    <input type="submit" class="btn btn-info" value="Update" />
+                </div>
+            </form>
+        </div>
+    </div>
+</main>

@@ -1,0 +1,47 @@
+<%- include('../pages/layout') %>
+<main>
+	<% if (messages.error) { %>
+	<div class="alert alert-danger" role="alert"><%- messages.error %></div>
+	<% } %>
+    <div class="card"> 
+    	<div class="card-header">
+			Add Employee
+		</div>
+        <div class="card-body">
+            <form action="/employee/add" method="post">
+                <div class="form-group">
+                    <label>First Name:</label>
+                    <input type="text" class="form-control" name="firstName" value="<%= firstName %>" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label>Middle Name:</label>
+                    <input type="text" class="form-control" name="middleName" value="<%= middleName %>" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label>Last Name:</label>
+                    <input type="text" class="form-control" name="lastName" value="<%= lastName %>" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label>Email:</label>
+                    <input type="text" class="form-control" name="email" value="<%= email %>" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label>Staff Number:</label>
+                    <input type="text" class="form-control" name="staffNo" value="<%= staffNo %>" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label>Phone Number:</label>
+                    <input type="text" class="form-control" name="phoneNumber" value="<%= phoneNumber %>" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label>Role No:</label>
+                    <input type="text" class="form-control" name="role" value="<%= role %>" autocomplete="off">
+                </div>
+				
+                <div class="form-group">
+                    <input type="submit" class="btn btn-info" value="Add"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>

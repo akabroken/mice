@@ -1,0 +1,278 @@
+<%- include('../pages/layout') %>
+    <!-- <main>
+  <h1>Admin Dashboard</h1>
+            <div class="cards">
+                <div class="card">
+                    <h2>Card 1</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+                <div class="card">
+                    <h2>Card 2</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+                <div class="card">
+                    <h2>Card 3</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+                <div class="card">
+                    <h2>Card 4</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
+</main> -->
+    <main>
+        <div class="">
+            <div class="well">
+                <h4>Dashboard</h4>
+
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="well">
+                        <h4>Events</h4>
+                        <p>11 Events</p>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="well">
+                        <h4>Accomodation</h4>
+                        <p>10 Hotel booked</p>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="well">
+                        <h4>Delayed Events</h4>
+                        <p>3</p>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="well">
+                        <h4>Revenue</h4>
+                        <p>KSh.300</p>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="row">
+            <div class="col-sm-">
+                <div class="well">
+                    <div class="card">
+                        <h2>Card 4</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="well">
+                    <div class="card">
+                        <h2>Card 4</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div> -->
+            <div class="cards">
+                <div class="card">
+                    <h2>Event Booking Summary</h2>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Event Name</th>
+                                <th scope="col">Customer</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% function getEventData(events, page, pageSize) { %>
+                                <% const start=page * pageSize; %>
+                                    <% const end=Math.min(start + pageSize, events.length); %>
+                                        <% for (let i=start; i < end; i++) { %>
+                                            <% console.log(events[i].id) %>
+                                                <tr>
+                                                    <th scope="row">
+                                                        <%= (i + 1) %>
+                                                    </th>
+                                                    <td>
+                                                        <%= events[i].eventName %>
+                                                    </td>
+                                                    <td>
+                                                        <%= events[i].customer %>
+                                                    </td>
+                                                    <td>
+                                                        <%= formatDate(events[i].eventdate) %>
+                                                    </td>
+
+                                                    <td>
+                                                        <% if (events[i].status==='Pending' ) { %>
+                                                            <a class="btn btn-danger"
+                                                                href="/events/actions/<%=events[i].id %>">
+                                                                <%= events[i].status %>
+                                                            </a>
+                                                            <% } else if (events[i].status==='Progress' ) { %>
+                                                                <a class="btn btn-info edit"
+                                                                    href="../events/actions/<%=events[i].id %>">
+                                                                    <%= events[i].status %>
+                                                                </a>
+                                                                <% } else if (events[i].status==='Delayed' ) { %>
+                                                                    <a class="btn btn-warning edit"
+                                                                        href="../events/actions/<%=events[i].id %>">
+                                                                        <%= events[i].status %>
+                                                                    </a>
+                                                                    <% } else { %>
+                                                                        <a class="btn btn-success edit"
+                                                                            href="../events/actions/<%=events[i].id %>">
+                                                                            <%= events[i].status %>
+                                                                        </a>
+                                                                        <% } %>
+                                                    </td>
+                                                </tr>
+                                                <% } %>
+                                                    <% } %>
+                                                        <% getEventData(events, page, pageSize); %>
+                        </tbody>
+                    </table>
+
+                    <!-- Pagination links -->
+                    <div class="pagination">
+                        <% const start=page * pageSize; %>
+                            <% const end=Math.min(start + pageSize, events.length); %>
+                                <% if (page> 0) { %>
+                                    <a href="?page=<%= page - 1 %>">Previous</a>
+                                    <% } %>
+                                        <span>Page <%= page + 1 %></span>
+                                        <% if (end < events.length) { %>
+                                            <a href="?page=<%= page + 1 %>">Next</a>
+                                            <% } %>
+                    </div>
+
+                </div>
+                <div class="card">
+                    <h2>Hotel & Accomodation Booking Summary</h2>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Hotel Name</th>
+                                <th scope="col">Customer</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">
+                                    1
+                                </th>
+                                <td>
+                                    Test Hotel One
+                                </td>
+                                <td>
+                                    Kenney
+                                </td>
+                                <td>
+                                    2023-10-15
+                                </td>
+                                <td>
+                                    <a class="btn btn-success">
+                                        Pending
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    2
+                                </th>
+                                <td>
+                                    Test Hotel Two
+                                </td>
+                                <td>
+                                    John
+                                </td>
+                                <td>
+                                    2023-10-15
+                                </td>
+                                <td>
+                                    <a class="btn btn-danger">
+                                        Pending
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    1
+                                </th>
+                                <td>
+                                    Test Hotel Six
+                                </td>
+                                <td>
+                                    Chalo
+                                </td>
+                                <td>
+                                    2023-10-15
+                                </td>
+                                <td>
+                                    <a class="btn btn-primary">
+                                        Pending
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    1
+                                </th>
+                                <td>
+                                    Test Hotel Three
+                                </td>
+                                <td>
+                                    James
+                                </td>
+                                <td>
+                                    2023-10-05
+                                </td>
+                                <td>
+                                    <a class="btn btn-warning">
+                                        Pending
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    1
+                                </th>
+                                <td>
+                                    Test Hotel Five
+                                </td>
+                                <td>
+                                    Ann
+                                </td>
+                                <td>
+                                    2023-10-15
+                                </td>
+                                <td>
+                                    <a class="btn btn-warning">
+                                        Pending
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="well">
+                        <p>Text</p>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="well">
+                        <p>Text</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>

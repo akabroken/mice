@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <title>Register</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+    <div class="register">
+        <h1>Register</h1>
+        <% if (messages.error) { %>
+            <div class="alert"><%- messages.error %></div>
+            <% } %>
+                <form action="/register/reg" method="post">
+                    <div class="form-group">
+                        <input type="text" name="firstName" placeholder="First Name" id="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="middleName" placeholder="Middle Name" id="middleName" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="lastName" placeholder="Last Name" id="lastName" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="organization" placeholder="Organization" id="organization" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="email" placeholder="Email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="phoneNumber" placeholder="Mobile Number" id="phoneNumber" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="address" placeholder="Address" id="address" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="country" placeholder="Country" id="country" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="city" placeholder="City" id="city" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="location" placeholder="Location" id="location" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="username" placeholder="Username" id="username" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" placeholder="Password" id="password" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="register">
+                    </div>
+                </form>
+    </div>
+</body>
+
+</html>

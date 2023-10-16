@@ -1,0 +1,41 @@
+<%- include('../pages/layout') %>
+
+<main>
+	<% if (messages.error) { %>
+	<div class="alert alert-danger" role="alert"><%- messages.error %></div>
+	<% } %>
+    <div class="card"> 
+    	<div class="card-header">
+			Edit Hotel Room
+		</div>
+        <div class="card-body">
+            <form action="/hotelrooms/update/<%= id %>" method="post">
+                
+                <div class="form-group">
+                    <label>Hotel ID:</label>
+                    <input type="text" class="form-control" name="hotelId" value="<%= hotelId %>" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label>Room Number:</label>
+                    <input type="text" class="form-control" name="roomNumber" value="<%= roomNumber %>" autocomplete="off">
+                </div>   
+                <div class="form-group">
+                    <label>Room Type:</label>
+                    <input type="text" class="form-control" name="roomType" value="<%= roomType %>" autocomplete="off">
+                </div> 
+                <div class="form-group">
+                    <label>Price Per Night:</label>
+                    <input type="text" class="form-control" name="pricePerNight" value="<%= pricePerNight %>" autocomplete="off">
+                </div> 
+                <div class="form-group">
+                    <label><Abbr></Abbr>vailability:</label>
+                    <input type="text" class="form-control" name="availability" value="<%= availability %>" autocomplete="off">
+                </div> 
+               
+                <div class="form-group">
+                    <input type="submit" class="btn btn-info" value="Update"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>

@@ -1,0 +1,73 @@
+
+<%- include('../pages/layout') %>
+<main>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    Add Hotel
+                </div>
+                <div class="card-body">
+                    <!-- Form Fields for First Section -->
+                    <form action="/hotels/add" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="hotelName">Hotel Name:</label>
+                            <input type="text" class="form-control" id="hotelName" name="hotelName" value="<%= hotelName %>" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <label for="country">Country:</label>
+                            <input type="text" class="form-control" id="country" name="country" value="<%= country %>" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <label for="state">State:</label>
+                            <input type="text" class="form-control" id="state" name="state" value="<%= state %>" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <label for="city">City:</label>
+                            <input type="text" class="form-control" id="city" name="city" value="<%= city %>" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <label for="location">Location:</label>
+                            <input type="text" class="form-control" id="location" name="location" value="<%= location %>" autocomplete="off">
+                        </div>
+                        <!-- Add more fields for the first section as needed -->
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                
+                <div class="card-body">
+                    <!-- Form Fields for Second Section (Images Upload) -->
+                    <form action="/hotels/add" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="address">Address:</label>
+                            <input type="text" class="form-control" id="address" name="address" value="<%= address %>" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <label for="contactInfo">Contact Info:</label>
+                            <input type="text" class="form-control" id="contactInfo" name="contactInfo" value="<%= contactInfo %>" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description:</label>
+                            <input type="text" class="form-control" id="description" name="description" value="<%= description %>" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <label for="ratings">Ratings:</label>
+                            <input type="text" class="form-control" id="ratings" name="ratings" value="<%= ratings %>" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <label for="images">Upload Image(s):</label>
+                            <input type="file" id="images" name="images" multiple>
+                        </div>
+                        <div class="form-group text-center">
+                            <input type="submit" class="btn btn-info" value="Add Hotel">
+                        </div>
+                       
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
