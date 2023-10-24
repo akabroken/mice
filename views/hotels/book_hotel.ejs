@@ -1,206 +1,109 @@
 <%- include('../pages/layout_mins') %>
 
-<% if (messages.success) { %>
-    <div class="alert success"><%- messages.success %></div>
-    <% } %>
+    <% if (messages.success) { %>
+        <div class="alert success"><%- messages.success %></div>
+        <% } %>
 
-    <% if (messages.error) { %>
-    <div class="alert warning" ><%- messages.error %></div>
-    <% } %>
+            <% if (messages.error) { %>
+                <div class="alert warning"><%- messages.error %></div>
+                <% } %>
+                    <div>
+                        <form class="event-form" action="/hotels/booking/<%= id %>" method="post">
+                            <section class="form-section">
+                                <fieldset>
+                                    <legend>
+                                        <h2>Submitter Information</h2>
+                                    </legend>
+                                    <p>We require your personal information in order to finalize your reservation.
+                                        Please
+                                        take a moment to complete the form provided, and double-check that the room,
+                                        number
+                                        of guests, and selected dates are accurate. When everything is in order, click
+                                        the
+                                        "Confirm Booking" button to proceed with your reservation.</p>
+                                    <div class="submitter-group">
+                                        <div class="form-group">
+                                            <label>First Name:</label>
+                                            <input type="text" id="firstname" name="firstname" placeholder="First Name"
+                                                required>
+                                            <label>Mid Name:</label>
+                                            <input type="text" id="middlename" placeholder="Middle Name"
+                                                name="middlename">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Last Name:</label>
+                                            <input type="text" id="lastname" placeholder="Last Name" name="lastname"
+                                                required>
+                                            <label>Email:</label>
+                                            <input type="email" id="email" name="email" placeholder="Email" required>
+                                        </div>
+                                    </div>
 
-    <form class="event-form" action="/events/booking" method="post" enctype="multipart/form-data">
-        <section class="form-section">
-            <fieldset>
-                <legend>
-                    <h2>Submitter Information</h2>
-                </legend>
-                <div class="submitter-group">
-                   
-                    <input type="text" id="firstname" name="firstname" placeholder="First Name" required>
-                   
-                    <input type="text" id="middlename" placeholder="Middle Name" name="middlename" >
-                </div>
-                <div class="form-group">
+                                    <div class="submitter-group">
+                                        <div class="form-group">
+                                            <label>Company:</label>
+                                            <input type="text" id="organization" name="organization"
+                                                placeholder="Organization/Company">
+                                            <label>Address:</label>
+                                            <input type="text" id="address" name="address" placeholder="Address"
+                                                required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Phone:</label>
+                                            <input type="tel" id="phone" name="phone" placeholder="Phone Number"
+                                                required>
+                                            <label>Country</label>
+                                            <input type="tel" id="country" name="country" placeholder="Country"
+                                                required>
+                                        </div>
 
-                </div>
-                <div class="submitter-group">
-                    
-                    <input type="text" id="lastname" placeholder="Last Name" name="lastname" required>
-                   
-                    <input type="email" id="email" name="email" placeholder="Email" required>
-                </div>
-                <div class="form-group">
+                                    </div>
 
-                </div>
-                <div class="submitter-group">  
-                    <input type="text" id="organization" name="organization" placeholder="Organization/Company" required>
-                    <input type="text" id="address" name="address" placeholder="Address" required>
-                    <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
-                </div>
-                <div class="submitter-group">
-                    <input type="tel" id="city" name="city" placeholder="City" required>
-                    <input type="tel" id="county" name="county" placeholder="County" required>
-                    <input type="text" id="org_location" name="org_location" placeholder="Location" required>
-                </div>
-            </fieldset>
-        </section>
+                                    <div class="submitter-group">
 
-        <section class="form-section">
-            <fieldset>
-                <legend>
-                    <h2>Event Information</h2>
-                </legend>
-                <div class="form-group">
-                    <input type="text" id="eventtitle" name="eventtitle" placeholder="Event Title" required>
-                </div>
-                <div class="form-group">
-                    <label>Event Type:</label>
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="outreach" name="outreach" value="outreach">
-                        <label for="outreach">Community Outreach</label>
+                                        <div class="form-group">
+                                            <label>City:</label>
+                                            <input type="text" id="city" name="city" placeholder="City" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Location</label>
+                                            <input type="text" id="location" name="location"
+                                                placeholder="Location">
+                                        </div>
+
+                                    </div>
+                                    <div class="submitter-group">
+                                        <div class="form-group">
+                                            <label> Date In: </label>
+                                            <input type="date" id="checkin" name="checkin" required>
+                                            <span>
+                                                <i class="fa fa-calendar " style="font-size:24px"></i>
+                                            </span>
+                                            <label> Date Out: </label>
+                                            <input type="date" id="checkout" name="checkout" required>
+                                            <span>
+                                                <i class="fa fa-calendar " style="font-size:24px"></i>
+                                            </span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label> PAX: </label>
+                                            <input type="number" id="pax" name="pax" placeholder="pax">
+                                            <label> Gender: </label>
+                                            <select name="gender">
+                                                <option value="">-- Select Gender --</option>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                                <option value="both">Both</option>
+                                        </div>
+                                        </select>
+                                    </div>
+                                </fieldset>
+                                <div class="form-group">
+                                    <input type="submit" value="Submit">
+                                </div>
+                            </section>
+                        </form>
                     </div>
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="support" name="support" value="support">
-                        <label for="support">Member Support</label>
-                    </div>
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="networking" name="networking" value="networking">
-                        <label for="networking">Networking</label>
-                    </div>
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="education" name="education" value="education">
-                        <label for="education">Education</label>
-                    </div>
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="fundraising" name="fundraising" value="fundraising">
-                        <label for="fundraising">Fundraising</label>
-                    </div>
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="eventothers" name="eventothers" value="eventothers">
-                        <label for="eventothers">Others</label>
-                    </div>
-                </div>
-                
-                <div class="form-group-flex">
-                    <label for="eventlocation">Event Location:</label>
-                    <select name="eventlocation" id="eventlocation" required>
-                        <option value="">--Select Location--</option>
-                        <option value="nairobi">Nairobi</option>
-                        <option value="machakos">Machakos</option>
-                        <option value="mombasa">Mombasa</option>
-                        <option value="nakuru">Nakuru</option>
-                    </select>
-                    <label for="eventDate">Event Date:</label>
-                    <input type="date" id="eventDate" name="eventDate" required>
-                </div>
-                <label for="eventDate">All Day Event:</label>
-                <div class="form-group-flex">
-                    <label for="yes">Yes:</label>
-                    <input type="radio" id="allDayYes" name="allDay" value="Yes">
-                    <label for="no">No:</label>
-                    <input type="radio" id="allDayNo" name="allDay" value="No">
-                </div>
-               
-                <div class="form-group-flex">
-                    <label for="start">Event Start Time:</label>
-                    <input type="time" id="start" name="start" required>
-                    <label for="end">Event End Time:</label>
-                    <input type="time" id="end" name="end" required>
-                </div>
 
-                
-                <div class="form-group-flex">
-                    <label for="repeating">Repeating Event:</label>
-                    <select name="repeating" id="repeating" required>
-                        <option value="">--Select --</option>
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
-                    </select>
-                    
-                    <input type="number" id="eventdays" placeholder="Days Booked" name="eventdays" required style="display: none;">
-                </div>
 
-                <div class="form-group">
-                    <label for="eventdescription">Description of Event:</label>
-                    <textarea id="eventdescription" name="eventdescription" rows="5" required></textarea>
-                </div>
-            </fieldset>
-            <!-- Add more event fields here -->
-        </section>
-
-        <!-- <section class="form-section">
-            <fieldset>
-                <legend>
-                    <h2>Advertisement</h2>
-                </legend>
-                <div class="form-group">
-                    <label for="marketingsupport">Do you need Marketing support?</label>
-                    <select id="marketingsupport" name="marketingsupport">
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>If yes, what type of Marketing Support?</label>
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="social" name="social" value="Social Media">
-                        <label for="social">Social Media</label>
-                        <input type="checkbox" id="newspaper" name="newspaper" value="Newspaper">
-                        <label for="newspaper">Newspaper</label>
-                    </div>
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="radioadd" name="radioadd" value="Radio" >
-                        <label for="radioadd">Radio</label>
-                        <input type="checkbox" id="billboard" name="billboard" value="Billboard">
-                        <label for="billboard">Billboard</label>
-                    </div>
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="emailcamp" name="emailcamp" value="Email Campaign">
-                        <label for="emailcamp">Email Campaign</label>
-                        <input type="checkbox" id="advtothers" name="advtothers" value="Others">
-                        <label for="advtothers">Others</label>
-                    </div>
-                </div>
-                <div class="form-group-flex">
-                    <label for="ticketsold">Will there be tickets sold?</label>
-                    <select id="ticketsold" name="ticketsold">
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
-                    </select>
-
-                    <label for="ticketsale">If yes, then how much are tickets?</label>
-                    <input type="number" id="ticketsale" name="ticketsale" >
-                </div>
-                
-                <div class="form-group">
-                    <label for="imageupload">Drag and Drop Image Upload:</label>
-                    <input type="file" id="imageupload" name="imageupload" multiple>
-                </div>
-
-                <div class="form-group">
-                    <label for="sponsor">Sponsor/Partner:</label>
-                    <select name="sponsor" id="sponsor" >
-                        <option value="">Please Select</option>
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="sponsorlist">If yes, who are they?</label>
-                    <textarea id="sponsorlist" name="sponsorlist" rows="5" ></textarea>
-                </div>
-            </fieldset>
-        </section> -->
-
-        <!-- <section class="form-section">
-            <h2>Event Description</h2>
-            id="images" name="images" multiple
-        </section> -->
-
-        <div class="form-group">
-            <input type="submit" value="Submit">
-        </div>
-    </form>
-
-    <%- include('../pages/footer') %>
+                    <%- include('../pages/footer') %>

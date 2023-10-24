@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var dbConn  = require('../lib/mice_db');
+const passwordUtils = require('../lib/ncrypt');
  
 // display user page
 router.get('/', async function(req, res, next) {  

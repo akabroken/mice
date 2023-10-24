@@ -161,103 +161,67 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">
-                                    1
-                                </th>
-                                <td>
-                                    Test Hotel One
-                                </td>
-                                <td>
-                                    Kenney
-                                </td>
-                                <td>
-                                    2023-10-15
-                                </td>
-                                <td>
-                                    <a class="btn btn-success">
-                                        Pending
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    2
-                                </th>
-                                <td>
-                                    Test Hotel Two
-                                </td>
-                                <td>
-                                    John
-                                </td>
-                                <td>
-                                    2023-10-15
-                                </td>
-                                <td>
-                                    <a class="btn btn-danger">
-                                        Pending
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    1
-                                </th>
-                                <td>
-                                    Test Hotel Six
-                                </td>
-                                <td>
-                                    Chalo
-                                </td>
-                                <td>
-                                    2023-10-15
-                                </td>
-                                <td>
-                                    <a class="btn btn-primary">
-                                        Pending
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    1
-                                </th>
-                                <td>
-                                    Test Hotel Three
-                                </td>
-                                <td>
-                                    James
-                                </td>
-                                <td>
-                                    2023-10-05
-                                </td>
-                                <td>
-                                    <a class="btn btn-warning">
-                                        Pending
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    1
-                                </th>
-                                <td>
-                                    Test Hotel Five
-                                </td>
-                                <td>
-                                    Ann
-                                </td>
-                                <td>
-                                    2023-10-15
-                                </td>
-                                <td>
-                                    <a class="btn btn-warning">
-                                        Pending
-                                    </a>
-                                </td>
-                            </tr>
+                            <% function getHotelData(hotels, page, pageSize) { %>
+                                <% const start=page * pageSize; %>
+                                    <% const end=Math.min(start + pageSize, hotels.length); %>
+                                        <% for (let i=start; i < end; i++) { %>
+                                            <% console.log(hotels[i].id) %>
+                                                <tr>
+                                                    <th scope="row">
+                                                        <%= (i + 1) %>
+                                                    </th>
+                                                    <td>
+                                                        <%= hotels[i].hotelName %>
+                                                    </td>
+                                                    <td>
+                                                        <%= hotels[i].customer %>
+                                                    </td>
+                                                    <td>
+                                                        <%= formatDate(hotels[i].bookingDate) %>
+                                                    </td>
+
+                                                    <td>
+                                                        <% if (hotels[i].status==='Pending' ) { %>
+                                                            <a class="btn btn-danger"
+                                                                href="/hotels/actions/<%=hotels[i].id %>">
+                                                                <%= hotels[i].status %>
+                                                            </a>
+                                                            <% } else if (events[i].status==='Progress' ) { %>
+                                                                <a class="btn btn-info edit"
+                                                                    href="../hotels/actions/<%=hotels[i].id %>">
+                                                                    <%= hotels[i].status %>
+                                                                </a>
+                                                                <% } else if (events[i].status==='Delayed' ) { %>
+                                                                    <a class="btn btn-warning edit"
+                                                                        href="../hotels/actions/<%=hotels[i].id %>">
+                                                                        <%= hotels[i].status %>
+                                                                    </a>
+                                                                    <% } else { %>
+                                                                        <a class="btn btn-success edit"
+                                                                            href="../hotels/actions/<%=hotels[i].id %>">
+                                                                            <%= hotels[i].status %>
+                                                                        </a>
+                                                                        <% } %>
+                                                    </td>
+                                                </tr>
+                                                <% } %>
+                                                    <% } %>
+                                                        <% getHotelData(hotels, page, pageSize); %>
                         </tbody>
                     </table>
+
+                    <!-- Pagination links -->
+                    <div class="pagination">
+                        <% const startt=page * pageSize; %>
+                            <% const endd=Math.min(startt + pageSize, hotels.length); %>
+                                <% if (page> 0) { %>
+                                    <a href="?page=<%= page - 1 %>">Previous</a>
+                                    <% } %>
+                                        <span>Page <%= page + 1 %></span>
+                                        <% if (endd < hotels.length) { %>
+                                            <a href="?page=<%= page + 1 %>">Next</a>
+                                            <% } %>
+                    </div>
 
                 </div>
 

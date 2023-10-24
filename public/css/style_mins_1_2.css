@@ -7,7 +7,7 @@ body {
     justify-content: center;
     align-content: center;
     padding: 2rem;
-    background-color: #f5f5f5;
+    background-color: #ffffff;
 }
 
 /* Responsive design for smaller screens */
@@ -68,6 +68,7 @@ img {
     max-height: 350px;
     width: auto;
     height: auto;
+    display: block;
 }
 
 .slideshow-container {
@@ -139,31 +140,88 @@ img {
 .containermidd {
     background-size: cover;
     background-position: center;
-    padding: 20px;
+    padding: 64px;
 }
 
 .container {
-    background-image: url('/images/mice_back_cover.png');
+    background-image: url('/images/mice_back_cover.');
 }
 
 .container__event {
-    background-image: url('/images/image2.png');
+    background-image: url('/images/image2');
 }
 
 .container-event-info {
-    background-image: url('/images/MICEBody1.png');
+    background-image: url('/images/MICEBody1');
 }
 
 .containertop {
-    background-image: url('/images/mice_icon2.png');
+    background-image: url('/images/mice_icon2');
 }
 
 .containermid {
-    background-image: url('/images/MICEBody2.png');
+    background-image: url('/images/MICEBody2');
 }
 
 .containermidd {
-    background-image: url('/images/MICEBody1.png');
+    background-image: url('/images/MICEBody1');
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both
+}
+
+.column-66 {
+    float: left;
+    width: 66.66666%;
+    padding: 20px;
+}
+
+.column-33 {
+    float: left;
+    width: 33.33333%;
+    padding: 20px;
+}
+
+.large-font {
+    font-size: 48px;
+}
+
+.xlarge-font {
+    font-size: 64px
+}
+
+.button {
+    border: none;
+    color: white;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #04AA6D;
+}
+
+.button-book {
+    border: none;
+    color: white;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #d94008c8;
+}
+
+@media screen and (max-width: 1000px) {
+
+    .column-66,
+    .column-33 {
+        width: 100%;
+        text-align: center;
+    }
+
+    img {
+        margin: auto;
+    }
 }
 
 /* Card styles */
@@ -452,6 +510,7 @@ img {
 
 .form-group {
     margin-bottom: 15px;
+    width: 100%;
 }
 
 .form-group-flex {
@@ -462,10 +521,8 @@ img {
 
 label {
     display: block;
-    font-weight: bold;
+    font-weight: normal;
 }
-
-
 
 input[type="text"],
 input[type="email"],
@@ -478,11 +535,25 @@ textarea {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    /* display: table-caption; */
+}
+
+fieldset {
+    background-color: #eeeeee;
+}
+
+legend {
+    background-color: gray;
+    color: white;
+    padding: 5px 10px;
 }
 
 .submitter-group {
     display: flex;
     align-items: center;
+    flex-direction: row;
+    /* Display elements in a row (horizontal) */
+    justify-content: flex-start;
 }
 
 .checkbox-group {
@@ -530,6 +601,18 @@ input[type="date"] {
     font-size: 16px;
     width: 200px;
     outline: none;
+    padding-right: 30px;
+    /* Set the background image for the input field */
+    /* Provide the correct path to your calendar icon image */
+    /* background-image: url('/images/icons/calendar.png');
+    background-repeat: no-repeat;
+    background-position: right center; */
+    /* Adjust the position of the icon (e.g., right-center) */
+    /* Add some padding on the right side of the input to make room for the icon */
+
+
+    /* padding-right: 30px; */
+    /* Adjust as needed */
 }
 
 /* Customize the date picker arrow icon (for some browsers) */
@@ -546,6 +629,43 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 /* Style the input when it's focused */
 input[type="date"]:focus {
     border: 1px solid #007BFF;
+}
+
+.input-container {
+    display: flex;
+}
+
+.sd-container {
+    position: relative;
+    float: left;
+}
+
+.sd {
+    padding: 5px 10px;
+    height: 30px;
+    width: 150px;
+}
+
+.open-button {
+    position: absolute;
+    top: 10px;
+    right: 11px;
+    width: 25px;
+    height: 25px;
+    background: #fff;
+    pointer-events: none;
+}
+
+.open-button button {
+    border: none;
+    background: transparent;
+}
+
+.calendar-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 /* Hide the default radio button */
@@ -665,4 +785,63 @@ option {
     /* Background color for warning alerts */
     color: #8a6d3b;
     /* Text color for warning alerts */
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.parent {
+    position: relative;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.parent img {
+    vertical-align: middle;
+}
+
+.parent .text {
+    position: absolute;
+    /* bottom: 160; */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgb(0, 0, 0);
+    /* Fallback color */
+    background: rgba(0, 0, 0, 0.5);
+    /* Black background with opacity */
+    color: #ffffff;
+    width: 70%;
+    padding: 20px;
+    text-align: center;
+    border: 2px solid red;
+}
+
+.image-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.hotel-item {
+    margin: 10px 0;
+    /* Spacing between hotels */
+}
+
+.hotel-images {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+.image-item {
+    display: inline-block;
+    width: 25%;
+    /* 4 items per row */
+    box-sizing: border-box;
+    text-align: center;
 }

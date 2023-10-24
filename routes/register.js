@@ -57,6 +57,14 @@ router.post('/reg', function (req, res, next) {
             lastLoginTime: currentDateTime
         }
 
+        dbConn.beginTransaction(function (err){
+
+            if (err) {
+                req.flash('Error', err);
+                res.redirect('/');
+                return;
+            }
+        });
         dbConn.query('SELECT * FROM mice_tbl_users WHERE username = ? and email = ?', [username, email], function (err, rows, fields) {
             if (err) throw err
 
@@ -140,7 +148,7 @@ router.post('/reg', function (req, res, next) {
                     }
                 });
             }
-        })
+        });
 
     }
 
